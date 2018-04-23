@@ -5,6 +5,7 @@ from people_msgs.msg import People
 from CONTROL import control
 from FRIENDLY import friendly
 from CAUTIOUS import cautious
+from tf import TransformListener
 
 class SRB:
 
@@ -15,6 +16,7 @@ class SRB:
         self.peopleSub = rospy.Subscriber('/people_tracker_filter/people', People, self.peopleCall) # subscribe to people tracker
         self.laserSub = rospy.Subscriber('/scan', LaserScan, self.laserCall) # subscribe to laser
         self.distance = 0 # variable to store distance from laser
+        self.tf = TransformListener
 
         while True:
             print("select behaviour")
@@ -34,8 +36,9 @@ class SRB:
         yCoords = []
 
         for i in msg.people:
-            xCoords.append(i.position.x)
-            yCoords.append(i.position.y)
+            pos = tf.transformPoint('/base_link', i.position)
+            xCoords.append(pos.x)
+            yCoords.append(pos.y)
             #print(i.name)
 
         if self.choice == 1: # control
