@@ -16,7 +16,7 @@ def friendly(xIn, yIn, dist): # inputs, list of x coords, list of y coords, and 
 
     xAv = xAv / length # divide by number of people to give mean
     yAv = yAv / length
-	
+    
     lr = 0 - yAv # left right return variables, rate of turn is proportional to position of average human
     fb = xAv - 1.5 # forwards backwards return variables, speed is proportional to distance from average human, stopping at 1.5m, reversing if closer
 

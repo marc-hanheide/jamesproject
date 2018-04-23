@@ -29,4 +29,4 @@ def template(xIn, yIn, dist): # inputs, list of x coords, list of y coords, and 
         lr = 0
         fb = -0.5
 
-return fb, lr # return movement values from behaviour
+    return fb, lr # return movement values from behaviour
