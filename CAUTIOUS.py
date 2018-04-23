@@ -14,19 +14,26 @@ def cautious(xIn, yIn, dist): # inputs, list of x coords, list of y coords, and 
         xAv = xAv + xIn[i]
         yAv = yAv + yIn[i]
 
-    xAv = xAv / length # divide by number of people to give mean
-    yAv = yAv / length
+    if length > 0:
+        xAv = xAv / length # divide by number of people to give mean
+        yAv = yAv / length
 
-    lr = 0 - yAv # left right return variables, proportional to position of average human
+    print  xIn
+
+    lr = 0 + yAv # left right return variables, proportional to position of average human
     fb = xAv - 3 # forwards backwards return variables, speed is proportional to distance from average, stopping at 3m, reversing if closer, moving away faster than approaching
     
     if fb > 0:
         
         fb = fb / 2
     
+
     if dist < 1:
         
         lr = 0
         fb = -0.5
+
+    fb = max(min(fb, .4), -.25)
+    lr = max(min(lr, 1), -1)
 
     return fb, lr # return movement values from behaviour
