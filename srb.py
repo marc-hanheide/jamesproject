@@ -37,26 +37,26 @@ class SRB:
             yCoords.append(i.position.y)
             print(i.name)
 
-    if self.choice == "1": # control
+        if self.choice == "1": # control
 
-        (fb, lr) = control(xCoords, yCoords, self.distance) # get movement commands from behaviour function, forwards/backwards, left/right
-        print('reacting')
+            (fb, lr) = control(xCoords, yCoords, self.distance) # get movement commands from behaviour function, forwards/backwards, left/right
+            print('reacting')
 
-    if self.choice == "2": # friendly
+        if self.choice == "2": # friendly
 
-        (fb, lr) = friendly(xCoords, yCoords, self.distance)
-        print('reacting')
+            (fb, lr) = friendly(xCoords, yCoords, self.distance)
+            print('reacting')
 
-    if self.choice == "3": # cautious
+        if self.choice == "3": # cautious
 
-        (fb, lr) = cautious(xCoords, yCoords, self.distance)
-        print('reacting')
+            (fb, lr) = cautious(xCoords, yCoords, self.distance)
+            print('reacting')
 
-        self.twist = Twist() # twist message to hold commands
-        self.twist.angular.z = lr
-        self.twist.linear.x = fb
+            self.twist = Twist() # twist message to hold commands
+            self.twist.angular.z = lr
+            self.twist.linear.x = fb
 
-        self.movePub.publish(self.twist) # send commands
+            self.movePub.publish(self.twist) # send commands
 
     def laserCall(self, msg): # what to do with laser data
 
