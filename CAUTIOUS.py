@@ -3,7 +3,7 @@
 # takes an array of x positions of people as floats, another for y positions, and a float for laser distance directly in front
 # returns a float for rotation, another for speed
 
-def template(xIn, yIn, dist): # inputs, list of x coords, list of y coords, and distance in front of robot from laser
+def cautious(xIn, yIn, dist): # inputs, list of x coords, list of y coords, and distance in front of robot from laser
 
     xAv = 0 # average x position of all people
     yAv = 0 # average y position of all people

@@ -11,11 +11,12 @@ def control(xIn, yIn, dist): # inputs, list of x coords, list of y coords, and d
         xAv = xAv + xIn[i]
         yAv = yAv + yIn[i]
     
-    xAv = xAv / length # divide by number of people to give mean
-    yAv = yAv / length
+    if length > 0:
+        xAv = xAv / length # divide by number of people to give mean
+        yAv = yAv / length
         
     lr = uniform(-0.5, 0.5) # left right return variables, produced at random
-    fb = uniform(0.6, 0.8) # forwards backwards return variables, produced at random
+    fb = uniform(0.2, 0.4) # forwards backwards return variables, produced at random
     
     if dist < 1: # anticollision
         

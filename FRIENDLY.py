@@ -14,15 +14,18 @@ def friendly(xIn, yIn, dist): # inputs, list of x coords, list of y coords, and 
         xAv = xAv + xIn[i]
         yAv = yAv + yIn[i]
 
-    xAv = xAv / length # divide by number of people to give mean
-    yAv = yAv / length
+    if length > 0:
+        xAv = xAv / length # divide by number of people to give mean
+        yAv = yAv / length
     
-    lr = 0 - yAv # left right return variables, rate of turn is proportional to position of average human
-    fb = xAv - 1.5 # forwards backwards return variables, speed is proportional to distance from average human, stopping at 1.5m, reversing if closer
+    lr = max(min(0 + yAv, 1), -1) # left right return variables, rate of turn is proportional to position of average human
+    fb = max(min(xAv - 1.5, .5) , -.5) # forwards backwards return variables, speed is proportional to distance from average human, stopping at 1.5m, reversing if closer
+
+    print yAv
 
     if dist < 1:
         
-        fb = -0.5
+        fb = -0.2
         lr = 0
 
     return fb, lr # return movement values from behaviour
