@@ -1,6 +1,6 @@
 from random import uniform
 
-def template(xIn, yIn, dist): # inputs, list of x coords, list of y coords, and distance in front of robot from laser
+def control(xIn, yIn, dist): # inputs, list of x coords, list of y coords, and distance in front of robot from laser
 	
     xAv = 0 # average x position of all people
     yAv = 0 # average y position of all people
